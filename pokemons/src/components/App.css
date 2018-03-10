@@ -34,7 +34,7 @@
 }
 
 .pokemon__card-back {
-  display: none;
+  display: block;
 }
 
 .pokemon__name {
