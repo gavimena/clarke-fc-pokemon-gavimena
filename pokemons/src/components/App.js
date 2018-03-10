@@ -6,21 +6,35 @@ class App extends Component {
   constructor(props) {
     super(props);
     //TODO: Remove this when done!
-    this.state = {
-      pokemons : [{"url":"https://pokeapi.co/api/v2/pokemon/1/","name":"bulbasaur","id":1},{"url":"https://pokeapi.co/api/v2/pokemon/2/","name":"ivysaur","id":2},{"url":"https://pokeapi.co/api/v2/pokemon/3/","name":"venusaur","id":3},{"url":"https://pokeapi.co/api/v2/pokemon/4/","name":"charmander","id":4},{"url":"https://pokeapi.co/api/v2/pokemon/5/","name":"charmeleon","id":5},{"url":"https://pokeapi.co/api/v2/pokemon/6/","name":"charizard","id":6},{"url":"https://pokeapi.co/api/v2/pokemon/7/","name":"squirtle","id":7},{"url":"https://pokeapi.co/api/v2/pokemon/8/","name":"wartortle","id":8},{"url":"https://pokeapi.co/api/v2/pokemon/9/","name":"blastoise","id":9},{"url":"https://pokeapi.co/api/v2/pokemon/10/","name":"caterpie","id":10},{"url":"https://pokeapi.co/api/v2/pokemon/11/","name":"metapod","id":11},{"url":"https://pokeapi.co/api/v2/pokemon/12/","name":"butterfree","id":12},{"url":"https://pokeapi.co/api/v2/pokemon/13/","name":"weedle","id":13},{"url":"https://pokeapi.co/api/v2/pokemon/14/","name":"kakuna","id":14},{"url":"https://pokeapi.co/api/v2/pokemon/15/","name":"beedrill","id":15},{"url":"https://pokeapi.co/api/v2/pokemon/16/","name":"pidgey","id":16},{"url":"https://pokeapi.co/api/v2/pokemon/17/","name":"pidgeotto","id":17},{"url":"https://pokeapi.co/api/v2/pokemon/18/","name":"pidgeot","id":18},{"url":"https://pokeapi.co/api/v2/pokemon/19/","name":"rattata","id":19},{"url":"https://pokeapi.co/api/v2/pokemon/20/","name":"raticate","id":20},{"url":"https://pokeapi.co/api/v2/pokemon/21/","name":"spearow","id":21},{"url":"https://pokeapi.co/api/v2/pokemon/22/","name":"fearow","id":22},{"url":"https://pokeapi.co/api/v2/pokemon/23/","name":"ekans","id":23},{"url":"https://pokeapi.co/api/v2/pokemon/24/","name":"arbok","id":24},{"url":"https://pokeapi.co/api/v2/pokemon/25/","name":"pikachu","id":25}]
-    }
+    // this.state = {
+    //   pokemons : [{"url":"https://pokeapi.co/api/v2/pokemon/1/","name":"bulbasaur","id":1},{"url":"https://pokeapi.co/api/v2/pokemon/2/","name":"ivysaur","id":2},{"url":"https://pokeapi.co/api/v2/pokemon/3/","name":"venusaur","id":3},{"url":"https://pokeapi.co/api/v2/pokemon/4/","name":"charmander","id":4},{"url":"https://pokeapi.co/api/v2/pokemon/5/","name":"charmeleon","id":5},{"url":"https://pokeapi.co/api/v2/pokemon/6/","name":"charizard","id":6},{"url":"https://pokeapi.co/api/v2/pokemon/7/","name":"squirtle","id":7},{"url":"https://pokeapi.co/api/v2/pokemon/8/","name":"wartortle","id":8},{"url":"https://pokeapi.co/api/v2/pokemon/9/","name":"blastoise","id":9},{"url":"https://pokeapi.co/api/v2/pokemon/10/","name":"caterpie","id":10},{"url":"https://pokeapi.co/api/v2/pokemon/11/","name":"metapod","id":11},{"url":"https://pokeapi.co/api/v2/pokemon/12/","name":"butterfree","id":12},{"url":"https://pokeapi.co/api/v2/pokemon/13/","name":"weedle","id":13},{"url":"https://pokeapi.co/api/v2/pokemon/14/","name":"kakuna","id":14},{"url":"https://pokeapi.co/api/v2/pokemon/15/","name":"beedrill","id":15},{"url":"https://pokeapi.co/api/v2/pokemon/16/","name":"pidgey","id":16},{"url":"https://pokeapi.co/api/v2/pokemon/17/","name":"pidgeotto","id":17},{"url":"https://pokeapi.co/api/v2/pokemon/18/","name":"pidgeot","id":18},{"url":"https://pokeapi.co/api/v2/pokemon/19/","name":"rattata","id":19},{"url":"https://pokeapi.co/api/v2/pokemon/20/","name":"raticate","id":20},{"url":"https://pokeapi.co/api/v2/pokemon/21/","name":"spearow","id":21},{"url":"https://pokeapi.co/api/v2/pokemon/22/","name":"fearow","id":22},{"url":"https://pokeapi.co/api/v2/pokemon/23/","name":"ekans","id":23},{"url":"https://pokeapi.co/api/v2/pokemon/24/","name":"arbok","id":24},{"url":"https://pokeapi.co/api/v2/pokemon/25/","name":"pikachu","id":25}]
+    // }
     // this.requestServer = this.requestServer.bind(this);
+    this.state = {
+      pokemons: []
+    }
+    this.getIdFromUrl = this.getIdFromUrl.bind(this);
   }
 
-    // componentDidMount() {
-    //   fetch('https://pokeapi.co/api/v2/pokemon/?limit=25')
-    //   .then(response => response.json())
-    //   .then(json => {
-    //     this.setState({
-    //       pokemons: json
-    //     });
-    //   });
-    // }
+  getIdFromUrl(url) {
+    return url.split("/")[6] || 0;
+  }
+
+    componentDidMount() {
+      console.log("componentDidMount");
+      fetch('https://pokeapi.co/api/v2/pokemon/?limit=25')
+      .then(response => response.json())
+      .then(json => {
+        console.log("json", json);
+        let pokemons = json.results.map(pokemon => {
+          pokemon["id"] = this.getIdFromUrl(pokemon.url);
+          return pokemon;
+        })
+        this.setState({
+          pokemons: pokemons
+        });
+      });
+    }
 
   // componentDidMount() {
   //   console.log('componentDidMount');

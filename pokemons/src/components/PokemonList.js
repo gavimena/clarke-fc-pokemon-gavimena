@@ -15,7 +15,11 @@ class PokemonList extends React.Component {
             <button className="info-btn">More Info</button>
           </div>
         })}
-        <div className="pokemon__container-back">
+        <div className="pokemon__card-back">
+          <h3>Types</h3>
+          <ul>
+            <li></li>
+          </ul>
         </div>
       </div>
     );
