@@ -1,11 +1,5 @@
 .App {
   text-align: center;
-  background: url('../images/pikachu.jpg') center no-repeat;
-}
-
-.App__background {
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .input {
@@ -17,7 +11,7 @@
   text-align: center;
 }
 
-.pokemons__list {
+.pokemon__list {
 	list-style: none;
 	display: grid;
 	grid-gap: 40px;
@@ -27,7 +21,7 @@
 	margin-bottom: 50px;
 }
 
-.pokemons__container {
+.pokemon__container-front {
 	 display: flex;
    flex-direction: column;
    width: 60%;
@@ -35,4 +29,21 @@
    justify-content: center;
    margin: auto;
    border: 1px solid;
+   border-radius: 7px;
+   background-color: #ffffff;
+}
+
+.pokemon__container-back {
+  display: none;
+}
+
+
+.pokemon__image {
+  width: 100px;
+  height: 100px;
+}
+
+.pokemon__characters {
+  display: flex;
+  justify-content: space-evenly;
 }
