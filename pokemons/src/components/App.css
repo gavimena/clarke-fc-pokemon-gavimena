@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background: url('../images/pikachu.jpg') center no-repeat;
 }
 
 .App__background {
@@ -13,4 +14,25 @@
   border: solid 1px;
   border-radius: 2px;
   outline-style: none;
+  text-align: center;
+}
+
+.pokemons__list {
+	list-style: none;
+	display: grid;
+	grid-gap: 40px;
+	grid-template-columns: 1fr;
+	padding: 0;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.pokemons__container {
+	 display: flex;
+   flex-direction: column;
+   width: 60%;
+   align-content: center;
+   justify-content: center;
+   margin: auto;
+   border: 1px solid;
 }

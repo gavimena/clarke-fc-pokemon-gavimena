@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-//import Background from './images/pikachuBkg.png';
+import PokemonList from './PokemonList';
 
 class App extends Component {
   constructor(props) {
@@ -32,16 +32,15 @@ class App extends Component {
     // <li> {this.state.pokemons.id} </li>
     // <li> <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" /></li>
     // <li> {this.state.pokemons.types[0].name} </li>
-    // <img className="App__background" src={Background} alt="background" />
     return (
       <div className="App">
-
+        <img className="App__background" alt="background" />
         <header>
           <h1>Pokemons</h1>
           <input className="input" type="text" name="search" placeholder="Write a Pokemon's character" />
         </header>
         <main>
-          <ul>
+          <ul className="pokemons__list">
             <li> Bulbasaur</li>
             <li> 1 </li>
             <li> <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="pokemon" /></li>
