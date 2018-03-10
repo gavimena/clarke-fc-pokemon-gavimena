@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.App__background {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .input {
   width: 80%;
   height: 30px;
