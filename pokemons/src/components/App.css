@@ -62,6 +62,8 @@
 .pokemon__characters {
   display: flex;
   justify-content: space-evenly;
+  list-style: none;
+  padding: 0;
 }
 
 @media all and (min-width: 400px) {

@@ -6,8 +6,10 @@ class PokemonList extends React.Component {
     return (
       <div className="pokemon__card-back">
           <h3>Types</h3>
-          <ul>
-            <li>Base experience: {selectedPokemon.base_experience}</li>
+          <ul className="pokemon__characters">
+            {selectedPokemon.types.map((type, idx) => {
+              return <li key={idx}>{type.type.name}</li>
+            })}
           </ul>
       </div>
     );
@@ -22,9 +24,9 @@ class PokemonList extends React.Component {
       <div className="pokemon__card">
         {pokemons.map(pokemon => {
           return <div key={pokemon.id} className="pokemon__card-front">
-            <h3 className="pokemon__name">{pokemon.name} - {pokemon.id} </h3>
+            <h3 className="pokemon__name">{pokemon.name} - Id / {pokemon.id} </h3>
             <img className="pokemon__image" src={`${imageUrlBase}${pokemon.id}.png`} alt="pokemon" />
-            {(pokemon.id === selectedPokemon.id) ?
+            {(parseInt(pokemon.id) === parseInt(selectedPokemon.id)) ?
                 this.renderDetails(selectedPokemon):''}
             <button className="info-btn" onClick={() => {this.props.onMoreInfo(pokemon.id)}}>More Info</button>
           </div>
