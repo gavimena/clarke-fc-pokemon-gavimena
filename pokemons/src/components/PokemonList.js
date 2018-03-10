@@ -26,7 +26,7 @@ class PokemonList extends React.Component {
           return <div key={pokemon.id} className="pokemon__card-front">
             <h3 className="pokemon__name">{pokemon.name} - Id / {pokemon.id} </h3>
             <img className="pokemon__image" src={`${imageUrlBase}${pokemon.id}.png`} alt="pokemon" />
-            {(parseInt(pokemon.id) === parseInt(selectedPokemon.id)) ?
+            {(parseInt(pokemon.id,10) === parseInt(selectedPokemon.id,10)) ?
                 this.renderDetails(selectedPokemon):''}
             <button className="info-btn" onClick={() => {this.props.onMoreInfo(pokemon.id)}}>More Info</button>
           </div>
