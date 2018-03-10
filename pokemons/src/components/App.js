@@ -44,22 +44,29 @@ class App extends Component {
   //   });
   // }
 
+
   //Get text from imput
 	filter(event){
 		this.setState({filter: event.target.value})
 	}
 
   render() {
-    // <li> <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" /></li>
-    // <li> {this.state.pokemons.types[0].name} </li>
+    let pokemons = this.state.pokemons;
+		//Condition to filter by letter
+		if(this.state.filter){
+			pokemons = pokemons.filter( pokemon => pokemon.name.includes(this.state.filter.toLowerCase()))
+      console.log(pokemons);
+
+		}
+
     return (
       <div className="App">
         <header>
           <h1>Pokemons</h1>
-          <input className="input" type="text" name="search" placeholder="Write a Pokemon's character" />
+          <input className="input" type="text" name="search" placeholder="Write a Pokemon's character" onChange={this.filter.bind(this)} />
         </header>
         <main>
-          <PokemonList pokemons={this.state.pokemons} />
+          <PokemonList pokemons={pokemons} />
         </main>
       </div>
     );
