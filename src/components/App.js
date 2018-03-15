@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import PokemonList from './PokemonList';
+import PokemonCard from './PokemonCard';
 
 class App extends Component {
   constructor(props) {
@@ -58,12 +58,12 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header>
-          <h1>Pokemons</h1>
-          <input className="input" type="text" name="search" placeholder="Write a Pokemon's character" onChange={this.filter.bind(this)} />
-        </header>
-        <main>
-          <PokemonList pokemons={pokemons}
+			<header>
+				<h1>Pokemons</h1>
+				<input className="input" type="text" name="search" placeholder="Write a Pokemon's character" onChange={this.filter.bind(this)} />
+			</header>
+			<main>
+				<PokemonCard pokemons={pokemons}
                        selectedPokemon={this.state.selectedPokemon}
                        onMoreInfo={this.requestServer}/>
         </main>
