@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import PokemonCard from './PokemonCard';
-import PokemonDetails from './PokemonDetails';
-
 
 class App extends Component {
 	constructor(props) {
