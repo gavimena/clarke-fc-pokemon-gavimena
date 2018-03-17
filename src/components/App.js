@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import PokemonCard from './PokemonCard';
-import PokemonMoreInfo from './PokemonMoreInfo';
-import {Link, Route, Switch} from 'react-router-dom';
+import PokemonDetails from './PokemonDetails';
 
 
 class App extends Component {
@@ -10,7 +9,8 @@ class App extends Component {
 		super(props);
 		this.state = {
 			pokemons : [],
-			selectedPokemon: {}
+			selectedPokemon: {},
+			filter: ''
 		}
 		this.requestServer = this.requestServer.bind(this);
 		this.getIdFromUrl = this.getIdFromUrl.bind(this);
@@ -53,12 +53,10 @@ class App extends Component {
 		this.setState({filter: event.target.value})
 	}
 
-
 	render() {
-		let pokemons = this.state.pokemons;
-		//Condition to filter by letter
-		if(this.state.filter){
-			pokemons = pokemons.filter( pokemon => pokemon.name.includes(this.state.filter.toLowerCase()))
+		let filteredPokemons = this.state.pokemons;
+		if (this.state.filter) {
+			filteredPokemons = filteredPokemons.filter( pokemon => pokemon.name.includes(this.state.filter.toLowerCase()))
 		}
 
 		return (
@@ -68,7 +66,7 @@ class App extends Component {
 					<input className="input" type="text" name="search" placeholder="Write a Pokemon's character" onChange={this.filter.bind(this)} />
 				</header>
 				<main>
-					<PokemonCard pokemons={pokemons}
+					<PokemonCard pokemons={filteredPokemons}
 						selectedPokemon={this.state.selectedPokemon}
 						onMoreInfo={this.requestServer}/>
 				</main>
